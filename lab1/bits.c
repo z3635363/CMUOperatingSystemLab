@@ -172,9 +172,7 @@ int fitsBits(int x, int n) {
  *  Rating: 2
  */
 int sign(int x) {
-  int is_nega = x >> 31; // + 0 - 1
-  int is_zero = ~(!(x ^ 0)) + 1; // is_0 1 not_0 0
-  return (is_nega & ~0) | (~is_nega & is_zero) & 0 | (~is_nega & ~is_zero & 1);
+  return x | ((!!x) | (x >> 31));
 }
 /* 
  * getByte - Extract byte n from word x
